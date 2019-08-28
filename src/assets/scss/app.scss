@@ -1,0 +1,797 @@
+@import "theme";
+@import "common";
+$url: '../icon/';
+body{
+  $color: $defaultFont;
+  font-size: .24rem;
+  color: $color;
+  font-family: '微软雅黑';
+  -webkit-overflow-scrolling: touch;
+  height: 100vh;
+  overflow: hidden;
+  letter-spacing: 1px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: none;
+  a{
+    text-decoration: none;
+    color: $color;
+  }
+}
+
+.page{
+  height: 100%;
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+}
+
+.mHeader{
+  position: absolute;
+  left: 0;
+  top:0;
+  right: 0;
+  background: $themeColor;
+  height: $headerHeight;
+  z-index: 9;
+  .title{
+    padding:0 $headerHeight;
+    font-size: 18px;
+    line-height: $headerHeight;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 2px;
+    position: relative;
+    &.bet{
+      &:after{
+        content: '';
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border-top: #fff solid 1px;
+        border-right: #fff solid 1px;
+        transform: rotate(135deg);
+        vertical-align: 3px;
+        margin-left: 4px;
+      }
+    }
+  }
+  .btn{
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    width: $headerHeight;
+    height: $headerHeight;
+    &.lf1{
+      left: 0;
+    }
+    &.lf2{
+      left: $headerHeight;
+    }
+    &.rg1{
+      right: 0;
+    }
+    &.rg2{
+      right: $headerHeight;
+    }
+  }
+}
+
+.content{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: $headerHeight;
+  background: $appBgColor;
+  overflow-y: scroll;
+  z-index: 9;
+  bottom: 0;
+  &.hasFooter{
+    bottom: $footerHeight;
+  }
+}
+
+.mFooter{
+  position: absolute;
+  height: $footerHeight;
+  background: #fff;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 9;
+  box-sizing: border-box;
+  border-top: $borderColor solid 1px;
+  .item{
+    text-align: center;
+    line-height: $footerHeight;
+    &.router-link-active{
+      color: $themeColor;
+    }
+  }
+}
+
+.mSideBox{
+  height: 3.2rem;
+  .mint-swipe-indicators{
+    bottom: 5px;
+    .mint-swipe-indicator{
+      width: 6px;
+      height: 6px;
+    }
+  }
+}
+
+.indexPage{
+  .lotteryBox{
+    overflow: hidden;
+    padding: 10px 5px 0;
+    .item{
+      float: left;
+      width: 25%;
+      margin-bottom: 10px;
+      font-size: 13px;
+      .mImgBox{
+        width: 50px;
+        margin: 0 auto;
+      }
+      .title{
+        text-align: center;
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+.mBetTitlePop{
+  width: 100%;
+  top:$headerHeight;
+  .list{
+    overflow: hidden;
+    padding: 0 .15rem .2rem;
+    .item{
+      float: left;
+      width: 2.3rem;
+      box-sizing: border-box;
+      margin-left: .15rem;
+      margin-top: .2rem;
+      text-align: center;
+      line-height: .6rem;
+      border: $borderColor solid 1px;
+      font-size: 13px;
+      &:nth-child(3n+1){
+        margin-left: 0;
+      }
+      &.cur{
+        border-color: $themeColor;
+        color: $themeColor;
+      }
+    }
+  }
+}
+
+$mleagueListHeight: 30px;
+.mleagueList{
+  position: absolute;
+  top:$headerHeight;
+  left: 0;
+  width: 100%;
+  height: $mleagueListHeight;
+  z-index: 3;
+  line-height: $mleagueListHeight;
+  background: $tipsBgColor;
+  .btnAll{
+    width: $mleagueListHeight;
+    height: $mleagueListHeight;
+    text-align: center;
+    float: left;
+    &.cur{
+      color: $themeColor;
+    }
+  }
+  .list{
+    margin-left: $mleagueListHeight;
+    overflow-x: scroll;
+    white-space: nowrap;
+    .item{
+      display: inline-block;
+      padding: 0 .2rem;
+      &.cur{
+        color: $themeColor;
+      }
+    }
+  }
+}
+
+.fbBetPage{
+  .content{
+    top: $headerHeight + $mleagueListHeight;
+  }
+}
+
+.mBallList{
+  overflow: hidden;
+  .dayItem{
+    border-bottom: $borderColor solid 1px;
+    background: #fff;
+    height: 30px;
+    overflow: hidden;
+    .title{
+      line-height: 30px;
+      border-bottom: $borderColor solid 1px;
+      font-size: .24rem;
+      color: $grayColor;
+      padding: 0 .2rem;
+      position: relative;
+      &:after{
+        content: '';
+        position: absolute;
+        transition: all .5s;
+        right: .2rem;
+        top:.15rem;
+        width: .14rem;
+        height: .24rem;
+        background: url($url + "iconArrow.png") no-repeat;
+        background-size: 100% 100%;
+        transform: rotate(-90deg);
+      }
+    }
+    &.open{
+      height: auto;
+      transition: all .5s;
+      .title{
+        &:after{
+          transform: rotate(90deg);
+        }
+      }
+    }
+    .matchList{
+      .matchItem{
+        padding: .2rem .2rem .2rem 0;
+        border-bottom: $borderColor dashed 1px;
+        position: relative;
+        .isDan{
+          position: absolute;
+          left: 0;
+          top:0;
+          font-size: .24rem;
+          padding: 0 .1rem;
+          line-height: .4rem;
+          background: $themeColor;
+          color: #fff;
+        }
+        &:last-child{
+          border-bottom: none;
+        }
+        .titleBox{
+          padding-left: 1.6rem;
+          display: flex;
+          font-size: .28rem;
+          font-weight: bold;
+          line-height: .35rem;
+          margin-bottom: .15rem;
+          .teamName{
+            flex: 1;
+            span{
+              font-weight: normal;
+              margin: 0 3px;
+            }
+          }
+          .vs{
+            width: 10%;
+          }
+        }
+        .cont{
+          display: flex;
+          align-items: center;
+          .infoBox{
+            width: 1.6rem;
+            text-align: center;
+            color: $grayColor;
+            display: flex;
+            align-items: center;
+            .middle{
+              width: 100%;
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
+.mOddsWrap{
+  flex: 1;
+  display: flex;
+  border: $borderColor solid 1px;
+  border-bottom: none;
+  &.bf{
+    border: none;
+    align-items: center;
+    .btnBf{
+      line-height: .6rem;
+      border: $borderColor solid 1px;
+      flex: 1;
+      text-align: center;
+      color: $grayColor;
+    }
+  }
+  &.zjq,&.bqc{
+    border-left: none;
+  }
+  .oddsBox{
+    flex: 1;
+    line-height: .3rem;
+    .noOpen{
+      text-align: center;
+      line-height: .7rem;
+      border-bottom: $borderColor solid 1px;
+    }
+    .isDanItem{
+      background: $appBgColor;
+    }
+    .type{
+      width: .3rem;
+      min-width: .3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: $borderColor solid 1px;
+      color: #fff;
+      text-align: center;
+      &.green{
+        background: $greenColor;
+      }
+      &.blue{
+        background: $blueColor;
+      }
+      &.red{
+        background: $redColor;
+      }
+      &.orange{
+        background: $orangeColor;
+      }
+    }
+    .oddsItem{
+      text-align: center;
+      padding: .05rem 0;
+      border-left: $borderColor solid 1px;
+      border-bottom: $borderColor solid 1px;
+      box-sizing: border-box;
+      &.cur{
+        background: $themeColor;
+        color: #fff;
+        .sp{
+          color: #fff;
+        }
+      }
+      .sp{
+        font-size: .2rem;
+        color: $grayColor;
+      }
+    }
+  }
+  .btnMore{
+    display: flex;
+    width: .6rem;
+    padding: 0 .1rem;
+    align-items: center;
+    justify-content: center;
+    color: $grayColor;
+    border-left: $borderColor solid 1px;
+    border-bottom: $borderColor solid 1px;
+    text-align: center;
+    &.cur{
+      @extend .oddsItem.cur;
+      .txt{
+        color: #fff;
+      }
+    }
+    span{
+      display: block;
+      width: 100%;
+      letter-spacing: 0;
+      &.txt{
+        color: #333;
+      }
+    }
+  }
+}
+.mOddsPop{
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  padding: .2rem .4rem;
+  .hd{
+    text-align: center;
+    .title{
+      text-align: center;
+      font-size: .3rem;
+      line-height: .6rem;
+      .vs{
+        width: 10%;
+      }
+    }
+    .sub{
+      color: $grayColor;
+      margin: .1rem 0;
+    }
+  }
+  .cont{
+    .mOddsWrap{
+      margin-bottom: .1rem;
+    }
+  }
+}
+
+.submitOrder{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: $footerHeight;
+  z-index: 99;
+  display: flex;
+  background: #fff;
+  align-items: center;
+  border-top: $borderColor solid 1px;
+  .btnDelete{
+    position: relative;
+    width: $footerHeight;
+    height: $footerHeight;
+    background: url($url + "iconDelete.png") no-repeat center;
+    background-size: 20px auto;
+    &:after{
+      content: '';
+      position: absolute;
+      right: 0;
+      top:15%;
+      bottom: 15%;
+      width: 1px;
+      background: $appBgColor;
+    }
+  }
+  .txtBox{
+    flex: 1;
+    text-align: center;
+    font-size: 14px;
+    .sub{
+      font-size: 12px;
+      color: $grayColor;
+    }
+  }
+  .btnSubmitOrder{
+    height: $footerHeight;
+    padding: 0 15px;
+    line-height: $footerHeight;
+    background: $themeColor;
+    font-size: 16px;
+    color: #fff;
+  }
+}
+
+.mPopBtnBox{
+  display: flex;
+  justify-content: space-between;
+  .btn{
+    flex: 1;
+    line-height: 30px;
+    text-align: center;
+    font-size: .28rem;
+    border-radius: 5px;
+    &.cancel{
+      background: $appBgColor;
+      color: $grayColor;
+    }
+    &.submit{
+      background: $themeColor;
+      color: #fff;
+    }
+  }
+}
+
+.mNoData{
+  padding: .6rem .3rem;
+  text-align: center;
+  background: #fff;
+}
+
+.loginPage{
+  .content{
+    background: #fff;
+  }
+  .loginBox{
+    margin-top: .4rem;
+    .logo{
+      width: 1.4rem;
+      height: 1.4rem;
+      margin: .2rem auto;
+    }
+    .loginForm{
+      padding: 0 .8rem;
+      .iptItem{
+        display: flex;
+        $height: .6rem;
+        margin-bottom: .3rem;
+        .iptName{
+          width: .9rem;
+          line-height: $height;
+          font-size: .28rem;
+        }
+        .ipt{
+          flex: 1;
+          input{
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 .1rem;
+            height: $height;
+            border: none;
+            background: none;
+            outline: none;
+            border-bottom: $borderColor solid 1px;
+          }
+        }
+        .btnGetCode{
+          width: 1.6rem;
+          margin-left: .3rem;
+          background: $themeColor;
+          color: #fff;
+          border-radius: 5px;
+          text-align: center;
+          line-height: $height;
+        }
+      }
+      .linkBox{
+        .link{
+          color: $grayColor;
+          opacity: .7;
+        }
+      }
+      .btnLogin{
+        display: block;
+        background: $themeColor;
+        line-height: .88rem;
+        border-radius: 10px;
+        margin-top: .35rem;
+        text-align: center;
+        font-size: .32rem;
+        color: #fff;
+        &.dis{
+          background: $grayColor;
+        }
+      }
+    }
+  }
+
+  .otherLoginType{
+    height: 1rem;
+    border-top: $borderColor solid 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    .title{
+      position: absolute;
+      left: 50%;
+      top:0;transform: translate(-50%,-50%);
+      background: #fff;
+      padding: 0 .2rem;
+      color: $grayColor;
+    }
+    .list{
+      display: flex;
+      .item{
+        flex: 1;
+        text-align: center;
+        line-height: 1rem;
+      }
+    }
+  }
+}
+
+.registerPage{
+  .registerBox{
+    .tips{
+      margin: .6rem .4rem;
+      color: $grayColor;
+    }
+    .registerForm{
+      padding: 0 .4rem;
+      .iptItem{
+        .iptName{
+          width: 1.4rem;
+        }
+      }
+      .agreementBox{
+        align-items: center;
+        input{
+          margin-right: .15rem;
+        }
+      }
+    }
+  }
+}
+.mCellList{
+  margin-bottom: .2rem;
+  &.radius{
+    margin: 0 .2rem .2rem;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .mint-cell{
+    min-height: 46px;
+    border-bottom: $borderColor solid 1px;
+    &.noBorder{
+      border-bottom: none;
+    }
+    .mint-cell-wrapper{
+      font-size: 14px;
+    }
+  }
+}
+.mint-cell-wrapper{
+  background-image: none;
+}
+.mint-cell{
+  background-image: none !important;
+}
+
+.userPage{
+  $userHeaderHeight: 100px;
+  .userHead{
+    height: $userHeaderHeight;
+    background: #fff;
+    display: flex;
+    padding-left: 15px;
+    box-sizing: border-box;
+    border-bottom: $borderColor solid 1px;
+    align-items: center;
+    .headImg{
+      width: 55px;
+      height: 55px;
+      margin-right: 15px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .userLink{
+      flex: 1;
+    }
+  }
+  .content{
+    top:$userHeaderHeight;
+    .baseInfoBox{
+      background: #fff;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding: .2rem 0 .3rem;
+      .item{
+        flex: 1;
+        border-right: 1px solid $borderColor;
+        .num{
+          color: $themeColor;
+          font-size: 20px;
+        }
+        .sub{
+          color: $grayColor;
+          font-size: 12px;
+        }
+        &:last-child{
+          border-right: none;
+        }
+      }
+    }
+  }
+}
+
+.betSubmitPage{
+  .content{
+    bottom: 90px;
+    .tips{
+      line-height: .7rem;
+      text-align: center;
+    }
+    .btnAdd{
+      display: block;
+      margin: 0 .4rem;
+      background: #fff;
+      line-height: .7rem;
+      text-align: center;
+      font-size: .28rem;
+    }
+    .list{
+      margin-top: .2rem;
+      .item{
+        display: flex;
+        padding: .2rem 0;
+        background: #ffff;
+        margin-bottom: 1px;
+        .deleteBox{
+          width: 1.2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: .2rem;
+          .btnDel{
+            width: .32rem;
+            height: .32rem;
+            background: url($url + "iconOrderDelete.png") no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+        .infoBox{
+          flex: 1;
+          .hd{
+            display: flex;
+            text-align: center;
+            font-size: .28rem;
+            .vs{
+              width: 10%;
+              color: $grayColor;
+            }
+            .name{
+              flex:1;
+            }
+          }
+          .oddsBox{
+            .oddsItem{
+              margin-top: .15rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  .betFooter{
+    position: absolute;
+    background: #fff;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 90px;
+    .setMultiple{
+      height: 40px;
+      display: flex;
+      .item{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: $borderColor solid 1px;
+        font-size: .26rem;
+        color: $grayColor;
+        &:first-child{
+          border-left: none;
+        }
+        &:after{
+          content: '';
+          display: inline-block;
+          width: .1rem;
+          height: .1rem;
+          border-top: $grayColor solid 1px;
+          border-right: $grayColor solid 1px;
+          transform: rotate(135deg);
+          margin-left: .1rem;
+        }
+      }
+    }
+  }
+}
+.mint-msgbox-wrapper{
+  .mint-msgbox-message{
+    font-size: 14px;
+  }
+  .mint-msgbox-btn{
+    font-size: 16px;
+  }
+  .mint-msgbox-input input.invalid{
+    border-color: $themeColor;
+  }
+  .mint-msgbox-confirm{
+    color: $themeColor;
+  }
+  .mint-msgbox-errormsg{
+    color: $themeColor;
+  }
+}
