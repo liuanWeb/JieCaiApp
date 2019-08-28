@@ -48,7 +48,7 @@
       <div class="submitOrder">
         <div class="txtBox">
           <p class="txt">金额 <span class="red">{{submitParams.Multiple * submitParams.Number * 2}}</span> 元</p>
-          <p class="sub">预计奖金 <span class="rend">{{bonusMin * submitParams.Number * 2}} ~ {{bonusMax}}</span> 元</p>
+          <p class="sub">预计奖金 <span class="rend">{{bonusMin * submitParams.Number * 2}} ~ {{bonusMax * submitParams.Number * 2}}</span> 元</p>
         </div>
         <a title="我要投注" class="btnSubmitOrder" @click="submitOrder()">我要投注</a>
       </div>

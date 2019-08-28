@@ -14,10 +14,7 @@ const cv = '1.0.0';  // 版本
 // 环境的切换
 axios.defaults.timeout = 10000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-axios.defaults.headers.post['Access-Control-Allow-Origin'] = 'http://www.ihavedream.top:8082/';
-axios.defaults.withCredentials = true;
-
-
+// axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Content-Type, api_key, Authorization';
 // 请求拦截器
 axios.interceptors.request.use(
 config => {
@@ -28,9 +25,11 @@ config => {
   //   clientType: clientType,
   //   cv: cv
   // }; // 基础参数
-  !docCookies.hasItem('uuid') && docCookies.setItem('uuid',getUuid(),10000000000,',','');
-  const token = localStorage.getItem('token');
+  !localStorage.getItem('uuid') && localStorage.setItem('uuid',getUuid());
+  const token = localStorage.getItem('token'),
+        uuid  = localStorage.getItem('uuid');
   token && (config.headers['token'] = token);
+  // uuid  && (config.headers['uuid']  = uuid);
   return config;
 },
 error => {
